@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'pytexteditorkXMxXv.ui'
+## Form generated from reading UI file 'pytexteditorESVyZP.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -35,15 +35,14 @@ class Ui_MainWindow(object):
         self.actionLicenses.setObjectName(u"actionLicenses")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.lineEdit = QLineEdit(self.centralwidget)
-        self.lineEdit.setObjectName(u"lineEdit")
-        self.lineEdit.setGeometry(QRect(0, 0, 801, 561))
-        self.lineEdit.setLayoutDirection(Qt.LeftToRight)
-        self.lineEdit.setInputMethodHints(Qt.ImhNone)
-        self.lineEdit.setFrame(True)
-        self.lineEdit.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
-        self.lineEdit.setDragEnabled(False)
-        self.lineEdit.setReadOnly(False)
+        self.textEdit = QTextEdit(self.centralwidget)
+        self.textEdit.setObjectName(u"textEdit")
+        self.textEdit.setGeometry(QRect(0, 0, 801, 551))
+        font = QFont()
+        font.setFamily(u"Segoe UI")
+        font.setPointSize(12)
+        self.textEdit.setFont(font)
+        self.textEdit.setStyleSheet(u"color:rgb(255,255,255);")
         MainWindow.setCentralWidget(self.centralwidget)
         self.status = QStatusBar(MainWindow)
         self.status.setObjectName(u"status")
@@ -88,7 +87,6 @@ class Ui_MainWindow(object):
         self.actionUndo.setText(QCoreApplication.translate("MainWindow", u"Undo", None))
         self.actionRedo.setText(QCoreApplication.translate("MainWindow", u"Redo", None))
         self.actionLicenses.setText(QCoreApplication.translate("MainWindow", u"License", None))
-        self.lineEdit.setText("")
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuEdit.setTitle(QCoreApplication.translate("MainWindow", u"Edit", None))
         self.menuSettings.setTitle(QCoreApplication.translate("MainWindow", u"Settings", None))
