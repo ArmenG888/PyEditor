@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'pytexteditorESVyZP.ui'
+## Form generated from reading UI file 'pytexteditorczilrB.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -17,10 +17,10 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(804, 592)
+        MainWindow.resize(804, 593)
         MainWindow.setStyleSheet(u"background-color:rgb(71, 71, 71);")
-        self.actionNew_File = QAction(MainWindow)
-        self.actionNew_File.setObjectName(u"actionNew_File")
+        self.actionRun = QAction(MainWindow)
+        self.actionRun.setObjectName(u"actionRun")
         self.actionOpen_File = QAction(MainWindow)
         self.actionOpen_File.setObjectName(u"actionOpen_File")
         self.actionSave = QAction(MainWindow)
@@ -35,14 +35,18 @@ class Ui_MainWindow(object):
         self.actionLicenses.setObjectName(u"actionLicenses")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
+        self.verticalLayout = QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setObjectName(u"verticalLayout")
         self.textEdit = QTextEdit(self.centralwidget)
         self.textEdit.setObjectName(u"textEdit")
-        self.textEdit.setGeometry(QRect(0, 0, 801, 551))
         font = QFont()
         font.setFamily(u"Segoe UI")
         font.setPointSize(12)
         self.textEdit.setFont(font)
         self.textEdit.setStyleSheet(u"color:rgb(255,255,255);")
+
+        self.verticalLayout.addWidget(self.textEdit)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.status = QStatusBar(MainWindow)
         self.status.setObjectName(u"status")
@@ -65,10 +69,10 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuEdit.menuAction())
         self.menubar.addAction(self.menuSettings.menuAction())
         self.menubar.addAction(self.menuAbout.menuAction())
-        self.menuFile.addAction(self.actionNew_File)
         self.menuFile.addAction(self.actionOpen_File)
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionSave_As)
+        self.menuFile.addAction(self.actionRun)
         self.menuEdit.addAction(self.actionUndo)
         self.menuEdit.addAction(self.actionRedo)
         self.menuAbout.addAction(self.actionLicenses)
@@ -80,7 +84,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.actionNew_File.setText(QCoreApplication.translate("MainWindow", u"New File", None))
+        self.actionRun.setText(QCoreApplication.translate("MainWindow", u"Run", None))
         self.actionOpen_File.setText(QCoreApplication.translate("MainWindow", u"Open File", None))
         self.actionSave.setText(QCoreApplication.translate("MainWindow", u"Save", None))
         self.actionSave_As.setText(QCoreApplication.translate("MainWindow", u"Save As", None))
