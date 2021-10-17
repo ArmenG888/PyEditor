@@ -56,7 +56,7 @@ class MyHighlighter(QSyntaxHighlighter):
         self.highlight_regex = {
             'HighlightCode' : re.compile(u'=|if|elif|else|for|while|return|def|print'),
 
-            'HighlightQuote': re.compile(u'".+?"'), 
+            'HighlightQuote': re.compile(u'".+?"'),
 
             'HighlightNumbers': re.compile(u'[0-9]+|True|False|None|from|import|self'),
         }
