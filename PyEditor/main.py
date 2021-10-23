@@ -25,11 +25,11 @@ class main(QMainWindow):
         self.ui.actionSave_As.triggered.connect(self.save_as)
         self.ui.actionSave_As.setShortcut("Ctrl+Shift+S")
         self.ui.actionRun.triggered.connect(self.run_file)
-        self.ui.actionRun.setShortcut("Ctrl+B")
+        self.ui.actionRun.setShortcut("Ctrl+Shift+B")
+
     def save(self):
         if self.filename == []:
             self.save_as()
-        print(self.ui.textEdit.toPlainText())
         with open(self.filename[0], "w") as w:
             w.write(self.ui.textEdit.toPlainText())
         return
@@ -45,20 +45,20 @@ class main(QMainWindow):
         dialog.setFileMode(QFileDialog.AnyFile)
         if dialog.exec_():
             self.filename = dialog.selectedFiles()
-            print(self.filename)
         with open(self.filename[0], "r") as r:
             file_content = r.read()
         self.ui.textEdit.setText(file_content)
+        self.setWindowTitle("PyEditor " + self.filename[0])
     def run_file(self):
-        run([sys.executable, self.filename[0]])
+        x = str(run([sys.executable, self.filename[0]]))
+        print(x)
 class MyHighlighter(QSyntaxHighlighter):
     def highlightBlock(self, text):
         self.highlight_regex = {
             'HighlightCode' : re.compile(u'=|if|elif|else|for|while|return|def|print'),
 
-            'HighlightQuote': re.compile(u'".+?"'),
-
-            'HighlightNumbers': re.compile(u'[0-9]+|True|False|None|from|import|self'),
+            'HighlightQuote': re.compile(u"""'.+?'|".+?"|"""),
+            'HighlightNumbers': re.compile(u'[0-9]+|True|False|None|from|import|self')
         }
         self.highlight_format = {}
         text_char_format = QTextCharFormat()
