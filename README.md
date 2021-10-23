@@ -4,7 +4,7 @@
 Text Editor made with python. Support langauges: Python, Html. more will be added soon.
 Note: other languages or files that get a markup.
 
-![Image of the app when its not python file](https://raw.githubusercontent.com/ArmenG888/PyEditor/main/Screenshots/PyEditor_No_Language_file.PNG)
+![Image of the app when its not python file](https://raw.githubusercontent.com/ArmenG888/PyEditor/main/Screenshots/PyEditor_Normal_file.PNG)
 
 <h1> Installation </h1>
 
