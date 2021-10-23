@@ -1,7 +1,8 @@
 # PyEditor
 
 <h1> work in progress </h1>
-Text Editor for python
+Text Editor made with python. Support langauges for now only python more will be added soon.
+Note: other languages or files that get a markup.
 
 <h1> Installation </h1>
 
