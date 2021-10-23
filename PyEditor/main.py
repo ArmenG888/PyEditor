@@ -57,12 +57,14 @@ class main(QMainWindow):
         self.setWindowTitle("PyEditor " + self.filename)
         if self.filename.endswith(".py") == True:
             Py_Highligther = py_highligther(self.ui.textEdit.document())
+        elif self.filename.endswith(".html") == True:
+            Html_Highlighter = html_highlighter(self.ui.textEdit.document())
     def run_file(self):
         x = str(run([sys.executable, self.filename[0]]))
 class py_highligther(QSyntaxHighlighter):
     def highlightBlock(self, text):
         self.highlight_regex = {
-            'HighlightCode' : re.compile(u'=|if|elif|else|for|while|return|def|print'),
+            'HighlightCode' : re.compile(u'=|if|elif|else|for|while|return|def|print|class'),
 
             'HighlightQuote': re.compile(u"""'.+?'|".+?"|"""),
             'HighlightNumbers': re.compile(u'[0-9]+|True|False|None|from|import|self')
@@ -85,7 +87,33 @@ class py_highligther(QSyntaxHighlighter):
             self.setFormat(mo.start()+strt, mo.end() - mo.start(), self.highlight_format[x])
             found = True
         return found
+class html_highlighter(QSyntaxHighlighter):
+    def highlightBlock(self, text):
+        self.highlight_regex = {
+            'HighlightCode' : re.compile(u'<.+?>|'),
 
+            'HighlightQuote': re.compile(u"""'.+?'|".+?"|"""),
+
+            'HighlightNumbers': re.compile(u'class|href|{.+?}')
+        }
+        self.highlight_format = {}
+        text_char_format = QTextCharFormat()
+        text_char_format.setForeground(QBrush(QColor("#dc322f")))
+        self.highlight_format['HighlightCode'] = text_char_format
+        text_char_format = QTextCharFormat()
+        text_char_format.setForeground(QBrush(QColor("#ffff66")))
+        self.highlight_format['HighlightQuote'] = text_char_format
+        text_char_format = QTextCharFormat()
+        text_char_format.setForeground(QBrush(QColor("#bf75ff")))
+        self.highlight_format['HighlightNumbers'] = text_char_format
+        for i in self.highlight_format:
+            self.highlightCode(text,0,i)
+    def highlightCode(self,text,strt,x):
+        found = False
+        for mo in re.finditer(self.highlight_regex[x],text):
+            self.setFormat(mo.start()+strt, mo.end() - mo.start(), self.highlight_format[x])
+            found = True
+        return found
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = main()
