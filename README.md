@@ -1,10 +1,11 @@
 # PyEditor
 
 <h1> work in progress </h1>
-Text Editor made with python. Support langauges for now only python more will be added soon.
+Text Editor made with python. Support langauges: Python, Html. more will be added soon.
+
 Note: other languages or files that get a markup.
 
-![Image of the app when its not python file](https://raw.githubusercontent.com/ArmenG888/PyEditor/main/Screenshots/Capture.PNG)
+![Image of the app when its not python file](https://raw.githubusercontent.com/ArmenG888/PyEditor/main/Screenshots/PyEditor_Normal_file.PNG)
 
 <h1> Installation </h1>
 
@@ -21,6 +22,10 @@ Linux or mac
 Windows
 <pre> python main.py </pre>
 
-<h2> Image of the app </h2>
+<h2> Python Markup </h2>
 
-![Image of the app](https://raw.githubusercontent.com/ArmenG888/PyEditor/main/Screenshots/PyEditor.PNG)
+![Image of the app](https://raw.githubusercontent.com/ArmenG888/PyEditor/main/Screenshots/PyEditor_python.PNG)
+
+<h2> Html Markup </h2>
+
+![Image of the app](https://raw.githubusercontent.com/ArmenG888/PyEditor/main/Screenshots/PyEditor_html.PNG)
