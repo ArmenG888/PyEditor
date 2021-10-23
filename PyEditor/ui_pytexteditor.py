@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'pytexteditorKmABJC.ui'
+## Form generated from reading UI file 'pytexteditorPZYBmt.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(804, 595)
+        MainWindow.resize(885, 692)
         MainWindow.setStyleSheet(u"background-color:rgb(71, 71, 71);")
         self.actionRun = QAction(MainWindow)
         self.actionRun.setObjectName(u"actionRun")
@@ -41,6 +41,8 @@ class Ui_MainWindow(object):
         self.actionDecrease_Font_Size.setObjectName(u"actionDecrease_Font_Size")
         self.actionh = QAction(MainWindow)
         self.actionh.setObjectName(u"actionh")
+        self.actionOpen_Recent = QAction(MainWindow)
+        self.actionOpen_Recent.setObjectName(u"actionOpen_Recent")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -62,13 +64,11 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.status)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 804, 21))
+        self.menubar.setGeometry(QRect(0, 0, 885, 21))
         self.menubar.setStyleSheet(u"color:rgb(255,255,255); ")
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuFile.setStyleSheet(u"hover:rgb(53, 53, 53);onclick:rgb(35, 35, 35);")
-        self.menuOpen_Recent = QMenu(self.menuFile)
-        self.menuOpen_Recent.setObjectName(u"menuOpen_Recent")
         self.menuEdit = QMenu(self.menubar)
         self.menuEdit.setObjectName(u"menuEdit")
         self.menuEdit.setStyleSheet(u"hover:rgb(53, 53, 53);onclick:rgb(35, 35, 35);")
@@ -85,13 +85,12 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuSettings.menuAction())
         self.menubar.addAction(self.menuAbout.menuAction())
         self.menuFile.addAction(self.actionOpen_File)
-        self.menuFile.addAction(self.menuOpen_Recent.menuAction())
+        self.menuFile.addAction(self.actionOpen_Recent)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionSave)
         self.menuFile.addAction(self.actionSave_As)
         self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionRun)
-        self.menuOpen_Recent.addAction(self.actionh)
         self.menuEdit.addAction(self.actionUndo)
         self.menuEdit.addAction(self.actionRedo)
         self.menuSettings.addAction(self.actionSettings)
@@ -118,8 +117,8 @@ class Ui_MainWindow(object):
         self.actionIncrease_Font_Size.setText(QCoreApplication.translate("MainWindow", u"Increase Font Size", None))
         self.actionDecrease_Font_Size.setText(QCoreApplication.translate("MainWindow", u"Decrease Font Size", None))
         self.actionh.setText(QCoreApplication.translate("MainWindow", u"h", None))
+        self.actionOpen_Recent.setText(QCoreApplication.translate("MainWindow", u"Open Recent", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
-        self.menuOpen_Recent.setTitle(QCoreApplication.translate("MainWindow", u"Open Recent", None))
         self.menuEdit.setTitle(QCoreApplication.translate("MainWindow", u"Edit", None))
         self.menuSettings.setTitle(QCoreApplication.translate("MainWindow", u"Settings", None))
         self.menuAbout.setTitle(QCoreApplication.translate("MainWindow", u"About", None))

@@ -9,13 +9,13 @@ from ui_pytexteditor import Ui_MainWindow
 class main(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
-        self.filename = []
+        self.filename = "None"
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.showMaximized()
         self.setWindowTitle('PyEditor')
+        self.font_size = 12
         self.setup_menus()
-        highlighter = MyHighlighter(self.ui.textEdit.document())
         self.show()
     def setup_menus(self):
         self.ui.actionOpen_File.triggered.connect(self.open)
@@ -26,6 +26,7 @@ class main(QMainWindow):
         self.ui.actionSave_As.setShortcut("Ctrl+Shift+S")
         self.ui.actionRun.triggered.connect(self.run_file)
         self.ui.actionRun.setShortcut("Ctrl+Shift+B")
+        self.ui.actionLicenses.triggered.connect(self.license)
 
     def save(self):
         if self.filename == []:
@@ -40,19 +41,25 @@ class main(QMainWindow):
             self.filename = dialog.selectedFiles()
         with open(self.filename[0], "w") as w:
             w.write(self.ui.textEdit.toPlainText())
+    def license(self):
+        with open("License","r") as r:
+            r = r.read()
+        self.ui.textEdit.setText(r)
     def open(self):
         dialog = QFileDialog(self)
         dialog.setFileMode(QFileDialog.AnyFile)
         if dialog.exec_():
-            self.filename = dialog.selectedFiles()
-        with open(self.filename[0], "r") as r:
+            self.filename = dialog.selectedFiles()[0]
+            print(self.filename)
+        with open(self.filename, "r") as r:
             file_content = r.read()
         self.ui.textEdit.setText(file_content)
-        self.setWindowTitle("PyEditor " + self.filename[0])
+        self.setWindowTitle("PyEditor " + self.filename)
+        if self.filename.endswith(".py") == True:
+            Py_Highligther = py_highligther(self.ui.textEdit.document())
     def run_file(self):
         x = str(run([sys.executable, self.filename[0]]))
-        print(x)
-class MyHighlighter(QSyntaxHighlighter):
+class py_highligther(QSyntaxHighlighter):
     def highlightBlock(self, text):
         self.highlight_regex = {
             'HighlightCode' : re.compile(u'=|if|elif|else|for|while|return|def|print'),
