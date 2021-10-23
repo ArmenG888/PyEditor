@@ -1,7 +1,7 @@
 # PyEditor
 
 <h1> work in progress </h1>
-Text Editor made with python and html. Support langauges for now only python more will be added soon.
+Text Editor made with python. Support langauges: Python, Html. more will be added soon.
 Note: other languages or files that get a markup.
 
 ![Image of the app when its not python file](https://raw.githubusercontent.com/ArmenG888/PyEditor/main/Screenshots/PyEditor_No_Language_file.PNG)
