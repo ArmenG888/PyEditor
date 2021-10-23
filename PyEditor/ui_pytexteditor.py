@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'pytexteditorzyiZeY.ui'
+## Form generated from reading UI file 'pytexteditorkBHORN.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -43,6 +43,8 @@ class Ui_MainWindow(object):
         self.actionh.setObjectName(u"actionh")
         self.actionOpen_Recent = QAction(MainWindow)
         self.actionOpen_Recent.setObjectName(u"actionOpen_Recent")
+        self.actionNew = QAction(MainWindow)
+        self.actionNew.setObjectName(u"actionNew")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
@@ -84,6 +86,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuEdit.menuAction())
         self.menubar.addAction(self.menuSettings.menuAction())
         self.menubar.addAction(self.menuAbout.menuAction())
+        self.menuFile.addAction(self.actionNew)
         self.menuFile.addAction(self.actionOpen_File)
         self.menuFile.addAction(self.actionOpen_Recent)
         self.menuFile.addSeparator()
@@ -118,6 +121,7 @@ class Ui_MainWindow(object):
         self.actionDecrease_Font_Size.setText(QCoreApplication.translate("MainWindow", u"Decrease Font Size", None))
         self.actionh.setText(QCoreApplication.translate("MainWindow", u"h", None))
         self.actionOpen_Recent.setText(QCoreApplication.translate("MainWindow", u"Open Recent", None))
+        self.actionNew.setText(QCoreApplication.translate("MainWindow", u"New", None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"File", None))
         self.menuEdit.setTitle(QCoreApplication.translate("MainWindow", u"Edit", None))
         self.menuSettings.setTitle(QCoreApplication.translate("MainWindow", u"Settings", None))

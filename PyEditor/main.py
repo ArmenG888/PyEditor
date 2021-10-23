@@ -26,6 +26,8 @@ class main(QMainWindow):
         self.ui.actionSave_As.setShortcut("Ctrl+Shift+S")
         self.ui.actionRun.triggered.connect(self.run_file)
         self.ui.actionRun.setShortcut("Ctrl+Shift+B")
+        self.ui.actionNew.triggered.connect(self.new)
+        self.ui.actionNew.setShortcut("Ctrl+N")
         self.ui.actionLicenses.triggered.connect(self.license)
 
     def save(self):
@@ -41,6 +43,9 @@ class main(QMainWindow):
             self.filename = dialog.selectedFiles()
         with open(self.filename[0], "w") as w:
             w.write(self.ui.textEdit.toPlainText())
+    def new(self):
+        self.setWindowTitle("PyEditor Untitled")
+        self.ui.textEdit.setText("")
     def license(self):
         with open("License","r") as r:
             r = r.read()
@@ -60,7 +65,7 @@ class main(QMainWindow):
         elif self.filename.endswith(".html") == True:
             Html_Highlighter = html_highlighter(self.ui.textEdit.document())
     def run_file(self):
-        x = str(run([sys.executable, self.filename[0]]))
+        x = str(run([sys.executable, self.filename]))
 class py_highligther(QSyntaxHighlighter):
     def highlightBlock(self, text):
         self.highlight_regex = {
