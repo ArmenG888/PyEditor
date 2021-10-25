@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'pytexteditorkBHORN.ui'
+## Form generated from reading UI file 'pytexteditorrdGnWF.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -17,8 +17,8 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(885, 692)
-        MainWindow.setStyleSheet(u"background-color:rgb(71, 71, 71);")
+        MainWindow.resize(884, 692)
+        MainWindow.setStyleSheet(u"")
         self.actionRun = QAction(MainWindow)
         self.actionRun.setObjectName(u"actionRun")
         self.actionOpen_File = QAction(MainWindow)
@@ -47,6 +47,7 @@ class Ui_MainWindow(object):
         self.actionNew.setObjectName(u"actionNew")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
+        self.centralwidget.setStyleSheet(u"background-color:rgb(71, 71, 71);")
         self.verticalLayout = QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.textEdit = QTextEdit(self.centralwidget)
@@ -56,18 +57,19 @@ class Ui_MainWindow(object):
         font.setFamily(u"Segoe UI")
         font.setPointSize(16)
         self.textEdit.setFont(font)
-        self.textEdit.setStyleSheet(u"color:rgb(255,255,255);")
+        self.textEdit.setStyleSheet(u"color:rgb(255,255,255);background-color:rgb;")
 
         self.verticalLayout.addWidget(self.textEdit)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.status = QStatusBar(MainWindow)
         self.status.setObjectName(u"status")
+        self.status.setStyleSheet(u"background-color:rgb(71, 71, 71);")
         MainWindow.setStatusBar(self.status)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 885, 21))
-        self.menubar.setStyleSheet(u"color:rgb(255,255,255); ")
+        self.menubar.setGeometry(QRect(0, 0, 884, 21))
+        self.menubar.setStyleSheet(u"color:rgb(255,255,255); background-color:rgb(71, 71, 71);")
         self.menuFile = QMenu(self.menubar)
         self.menuFile.setObjectName(u"menuFile")
         self.menuFile.setStyleSheet(u"hover:rgb(53, 53, 53);onclick:rgb(35, 35, 35);")
