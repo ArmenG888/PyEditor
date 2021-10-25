@@ -1,11 +1,11 @@
 import sys,re
-from subprocess import run
 from PySide2 import QtCore, QtGui, QtWidgets
 from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent,QRegExp)
 from PySide2.QtGui import (QBrush, QColor, QSyntaxHighlighter,QConicalGradient,QTextCharFormat, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
+import subprocess
 from ui_pytexteditor import Ui_MainWindow
-
+from ui_output import Ui_MainWindow as output_win
 class main(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -31,9 +31,9 @@ class main(QMainWindow):
         self.ui.actionLicenses.triggered.connect(self.license)
 
     def save(self):
-        if self.filename == []:
+        if self.filename == "None":
             self.save_as()
-        with open(self.filename[0], "w") as w:
+        with open(self.filename, "w") as w:
             w.write(self.ui.textEdit.toPlainText())
         return
     def save_as(self):
@@ -41,7 +41,7 @@ class main(QMainWindow):
         dialog.setFileMode(QFileDialog.AnyFile)
         if dialog.exec_():
             self.filename = dialog.selectedFiles()
-        with open(self.filename[0], "w") as w:
+        with open(self.filename, "w") as w:
             w.write(self.ui.textEdit.toPlainText())
     def new(self):
         self.setWindowTitle("PyEditor Untitled")
@@ -65,7 +65,7 @@ class main(QMainWindow):
         elif self.filename.endswith(".html") == True:
             Html_Highlighter = html_highlighter(self.ui.textEdit.document())
     def run_file(self):
-        x = str(run([sys.executable, self.filename]))
+        QMessageBox.information(self, self.filename,exec(open(self.filename).read()))
 class py_highligther(QSyntaxHighlighter):
     def highlightBlock(self, text):
         self.highlight_regex = {
