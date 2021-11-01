@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'pytexteditorrdGnWF.ui'
+## Form generated from reading UI file 'pytexteditorBLjURT.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
         font.setFamily(u"Segoe UI")
         font.setPointSize(16)
         self.textEdit.setFont(font)
-        self.textEdit.setStyleSheet(u"color:rgb(255,255,255);background-color:rgb;")
+        self.textEdit.setStyleSheet(u"color:rgb(255,255,255);background-color:rgb(71, 71, 71);")
 
         self.verticalLayout.addWidget(self.textEdit)
 
