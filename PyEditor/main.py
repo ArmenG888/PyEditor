@@ -5,7 +5,6 @@ from PySide2.QtGui import (QBrush, QColor, QSyntaxHighlighter,QConicalGradient,Q
 from PySide2.QtWidgets import *
 import subprocess
 from ui_pytexteditor import Ui_MainWindow
-from ui_output import Ui_MainWindow as output_win
 class main(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -70,7 +69,6 @@ class py_highligther(QSyntaxHighlighter):
     def highlightBlock(self, text):
         self.highlight_regex = {
             'HighlightCode' : re.compile(u'=|if|elif|else|for|while|return|def|print|class'),
-
             'HighlightQuote': re.compile(u"""'.+?'|".+?"|"""),
             'HighlightNumbers': re.compile(u'[0-9]+|True|False|None|from|import|self')
         }
@@ -96,9 +94,7 @@ class html_highlighter(QSyntaxHighlighter):
     def highlightBlock(self, text):
         self.highlight_regex = {
             'HighlightCode' : re.compile(u'<.+?>|'),
-
             'HighlightQuote': re.compile(u"""'.+?'|".+?"|"""),
-
             'HighlightNumbers': re.compile(u'class|href|{.+?}')
         }
         self.highlight_format = {}
