@@ -1,10 +1,15 @@
-import sys,re
+import sys
+import re
 from PySide2 import QtCore, QtGui, QtWidgets
-from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime, QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent,QRegExp)
-from PySide2.QtGui import (QBrush, QColor, QSyntaxHighlighter,QConicalGradient,QTextCharFormat, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
+from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime,
+                            QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent, QRegExp)
+from PySide2.QtGui import (QBrush, QColor, QSyntaxHighlighter, QConicalGradient, QTextCharFormat, QCursor,
+                           QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 import subprocess
 from ui_pytexteditor import Ui_MainWindow
+
+
 class main(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
@@ -16,6 +21,7 @@ class main(QMainWindow):
         self.font_size = 12
         self.setup_menus()
         self.show()
+
     def setup_menus(self):
         self.ui.actionOpen_File.triggered.connect(self.open)
         self.ui.actionOpen_File.setShortcut("Ctrl+O")
@@ -35,6 +41,7 @@ class main(QMainWindow):
         with open(self.filename, "w") as w:
             w.write(self.ui.textEdit.toPlainText())
         return
+
     def save_as(self):
         dialog = QFileDialog(self)
         dialog.setFileMode(QFileDialog.AnyFile)
@@ -42,13 +49,16 @@ class main(QMainWindow):
             self.filename = dialog.selectedFiles()
         with open(self.filename, "w") as w:
             w.write(self.ui.textEdit.toPlainText())
+
     def new(self):
         self.setWindowTitle("PyEditor Untitled")
         self.ui.textEdit.setText("")
+
     def license(self):
-        with open("License","r") as r:
+        with open("License", "r") as r:
             r = r.read()
         self.ui.textEdit.setText(r)
+
     def open(self):
         dialog = QFileDialog(self)
         dialog.setFileMode(QFileDialog.AnyFile)
@@ -63,12 +73,16 @@ class main(QMainWindow):
             Py_Highligther = py_highligther(self.ui.textEdit.document())
         elif self.filename.endswith(".html") == True:
             Html_Highlighter = html_highlighter(self.ui.textEdit.document())
+
     def run_file(self):
-        QMessageBox.information(self, self.filename,exec(open(self.filename).read()))
+        QMessageBox.information(self, self.filename,
+                                exec(open(self.filename).read()))
+
+
 class py_highligther(QSyntaxHighlighter):
     def highlightBlock(self, text):
         self.highlight_regex = {
-            'HighlightCode' : re.compile(u'=|if|elif|else|for|while|return|def|print|class'),
+            'HighlightCode': re.compile(u'=|if|elif|else|for|while|return|def|print|class'),
             'HighlightQuote': re.compile(u"""'.+?'|".+?"|"""),
             'HighlightNumbers': re.compile(u'[0-9]+|True|False|None|from|import|self')
         }
@@ -83,17 +97,21 @@ class py_highligther(QSyntaxHighlighter):
         text_char_format.setForeground(QBrush(QColor("#bf75ff")))
         self.highlight_format['HighlightNumbers'] = text_char_format
         for i in self.highlight_format:
-            self.highlightCode(text,0,i)
-    def highlightCode(self,text,strt,x):
+            self.highlightCode(text, 0, i)
+
+    def highlightCode(self, text, strt, x):
         found = False
-        for mo in re.finditer(self.highlight_regex[x],text):
-            self.setFormat(mo.start()+strt, mo.end() - mo.start(), self.highlight_format[x])
+        for mo in re.finditer(self.highlight_regex[x], text):
+            self.setFormat(mo.start()+strt, mo.end() -
+                           mo.start(), self.highlight_format[x])
             found = True
         return found
+
+
 class html_highlighter(QSyntaxHighlighter):
     def highlightBlock(self, text):
         self.highlight_regex = {
-            'HighlightCode' : re.compile(u'<.+?>|'),
+            'HighlightCode': re.compile(u'<.+?>|'),
             'HighlightQuote': re.compile(u"""'.+?'|".+?"|"""),
             'HighlightNumbers': re.compile(u'class|href|{.+?}')
         }
@@ -108,13 +126,17 @@ class html_highlighter(QSyntaxHighlighter):
         text_char_format.setForeground(QBrush(QColor("#bf75ff")))
         self.highlight_format['HighlightNumbers'] = text_char_format
         for i in self.highlight_format:
-            self.highlightCode(text,0,i)
-    def highlightCode(self,text,strt,x):
+            self.highlightCode(text, 0, i)
+
+    def highlightCode(self, text, strt, x):
         found = False
-        for mo in re.finditer(self.highlight_regex[x],text):
-            self.setFormat(mo.start()+strt, mo.end() - mo.start(), self.highlight_format[x])
+        for mo in re.finditer(self.highlight_regex[x], text):
+            self.setFormat(mo.start()+strt, mo.end() -
+                           mo.start(), self.highlight_format[x])
             found = True
         return found
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = main()
