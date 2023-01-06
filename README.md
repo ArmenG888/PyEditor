@@ -1,7 +1,7 @@
 # PyEditor
 
 <h1> work in progress </h1>
-Text Editor made with python. Support langauges: Python, Html. more will be added soon.
+Text Editor made with python. Support languages: Python, Html. more will be added soon.
 
 Note: other languages or files that get a markup.
 
