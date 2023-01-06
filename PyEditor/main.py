@@ -1,18 +1,19 @@
 import sys
 import re
 from PySide2 import QtCore, QtGui, QtWidgets
-from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTime,
-                            QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent, QRegExp)
-from PySide2.QtGui import (QBrush, QColor, QSyntaxHighlighter, QConicalGradient, QTextCharFormat, QCursor,
-                           QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
-from PySide2.QtWidgets import *
-import subprocess
+from PySide2.QtCore import (
+    QCoreApplication, QPropertyAnimation, QDate, QDateTime,
+    QMetaObject, QObject, QPoint, QRect, QSize, QTime, QUrl, Qt, QEvent, QRegExp)
+from PySide2.QtGui import (
+    QBrush, QColor, QSyntaxHighlighter, QConicalGradient, QTextCharFormat,
+    QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient,
+    QPalette, QPainter, QPixmap, QRadialGradient)
 from ui_pytexteditor import Ui_MainWindow
 
 
-class main(QMainWindow):
+class main(QtWidgets.QMainWindow):
     def __init__(self):
-        QMainWindow.__init__(self)
+        QtWidgets.QMainWindow.__init__(self)
         self.filename = "None"
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -43,8 +44,8 @@ class main(QMainWindow):
         return
 
     def save_as(self):
-        dialog = QFileDialog(self)
-        dialog.setFileMode(QFileDialog.AnyFile)
+        dialog = QtWidgets.QFileDialog(self)
+        dialog.setFileMode(QtWidgets.QFileDialog.AnyFile)
         if dialog.exec_():
             self.filename = dialog.selectedFiles()
         with open(self.filename, "w") as w:
@@ -60,8 +61,8 @@ class main(QMainWindow):
         self.ui.textEdit.setText(r)
 
     def open(self):
-        dialog = QFileDialog(self)
-        dialog.setFileMode(QFileDialog.AnyFile)
+        dialog = QtWidgets.QFileDialog(self)
+        dialog.setFileMode(QtWidgets.QFileDialog.AnyFile)
         if dialog.exec_():
             self.filename = dialog.selectedFiles()[0]
             print(self.filename)
@@ -69,22 +70,24 @@ class main(QMainWindow):
             file_content = r.read()
         self.ui.textEdit.setText(file_content)
         self.setWindowTitle("PyEditor " + self.filename)
-        if self.filename.endswith(".py") == True:
+        if self.filename.endswith(".py"):
             Py_Highligther = py_highligther(self.ui.textEdit.document())
-        elif self.filename.endswith(".html") == True:
+        elif self.filename.endswith(".html"):
             Html_Highlighter = html_highlighter(self.ui.textEdit.document())
 
     def run_file(self):
-        QMessageBox.information(self, self.filename,
-                                exec(open(self.filename).read()))
+        QtWidgets.QMessageBox.information(self, self.filename,
+                                          exec(open(self.filename).read()))
 
 
 class py_highligther(QSyntaxHighlighter):
     def highlightBlock(self, text):
         self.highlight_regex = {
-            'HighlightCode': re.compile(u'=|if|elif|else|for|while|return|def|print|class'),
+            'HighlightCode': re.compile(
+                u'=|if|elif|else|for|while|return|def|print|class'),
             'HighlightQuote': re.compile(u"""'.+?'|".+?"|"""),
-            'HighlightNumbers': re.compile(u'[0-9]+|True|False|None|from|import|self')
+            'HighlightNumbers': re.compile(
+                u'[0-9]+|True|False|None|from|import|self')
         }
         self.highlight_format = {}
         text_char_format = QTextCharFormat()
@@ -138,6 +141,6 @@ class html_highlighter(QSyntaxHighlighter):
 
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     window = main()
     sys.exit(app.exec_())
